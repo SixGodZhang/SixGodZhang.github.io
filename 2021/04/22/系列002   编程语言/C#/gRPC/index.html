@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		gRPC | 
+	 
+	NOTE
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">NOTE</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<!--
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li> 
+		-->
+		<li class="menu-item">
+			<a href="https://github.com/SixGodZhang" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列001  IDE
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97001%20%20IDE/Pycharm_snippets/">
+										Pycharm_snippets
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97001%20%20IDE/VSCode_snippets/">
+										VSCode_snippets
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97001%20%20IDE/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+										vscode插件开发
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97001%20%20IDE/%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/">
+										测试笔记
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列002   编程语言
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Bat
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Bat/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9BBat%E6%8C%87%E4%BB%A4/">
+										常用的一些Bat指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										C#
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C#/WPF/">
+										WPF
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C#/Winform/">
+										Winform
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C#/gRPC/">
+										gRPC
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C#/%E5%AF%B9C%E7%9B%98%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90/">
+										对C盘访问权限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										C++
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/C++%20%E5%8A%A8%E6%80%81%E5%BA%93%20%E5%92%8C%20%E9%9D%99%E6%80%81%E5%BA%93/">
+										C++ 动态库 和 静态库
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/C++%20%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7/">
+										C++ 运算符优先级
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/C%E5%92%8CC++%E4%B8%AD%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93/">
+										C和C++中的结构体
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/bool%E5%80%BC%E7%9A%84%E5%A4%A7%E5%B0%8F/">
+										bool值的大小
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/char%20%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+										char 字符串
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/class/">
+										class
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/const/">
+										const
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/socket/">
+										socket
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/template/">
+										template
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/this/">
+										this
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/virtual/">
+										virtual
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/void/">
+										void
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E4%B9%A6%E7%B1%8D/">
+										书籍
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%85%B3%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96/">
+										关于初始化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0/">
+										友元函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%8F%98%E9%87%8F%E5%90%8D%E5%B1%8F%E8%94%BD%E7%9A%84%E9%97%AE%E9%A2%98/">
+										变量名屏蔽的问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%A3%B0%E6%98%8E%E4%B8%AD%E7%9A%84%E5%9D%91/">
+										声明中的坑
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%AE%8F/">
+										宏
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%BC%95%E7%94%A8/">
+										引用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">
+										操作符重载
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E6%95%B0%E7%BB%84/">
+										数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E6%B1%82%E5%80%BC%E9%A1%BA%E5%BA%8F/">
+										求值顺序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E7%A7%98%E9%92%A5/">
+										秘钥
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E7%BB%93%E6%9E%84%E4%BD%93/">
+										结构体
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/MaxScript/">
+										MaxScript
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Python
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/Python%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1/">
+										Python内建对象
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/Python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90%E7%AC%94%E8%AE%B0/">
+										Python源码剖析笔记
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/property/">
+										property
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E4%B9%A6%E5%8D%95/">
+										书单
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E5%B8%A7%E5%AF%B9%E8%B1%A1/">
+										帧对象
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%89%B9%E6%AE%8A%E5%90%8D%E5%8D%95/">
+										特殊名单
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+										装饰器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列003  Unity
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Unity编辑器
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97003%20%20Unity/Unity%E7%BC%96%E8%BE%91%E5%99%A8/EditorApplication/">
+										EditorApplication
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										动画
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97003%20%20Unity/%E5%8A%A8%E7%94%BB/StateMachineBehaviour/">
+										StateMachineBehaviour
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										学习资料
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97003%20%20Unity/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/Unity%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/">
+										Unity一些好用的工具
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97003%20%20Unity/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/%E8%B5%84%E6%96%99%E7%AB%99%E7%82%B9/">
+										资料站点
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										碰撞器
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97003%20%20Unity/%E7%A2%B0%E6%92%9E%E5%99%A8/Unity%E4%B8%AD%E6%89%80%E6%9C%89%E7%A2%B0%E6%92%9E%E5%99%A8%E6%A6%82%E8%BF%B0/">
+										Unity中所有碰撞器概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列005  开发工具
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97005%20%20%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7%E6%B8%85%E5%8D%95/">
+										工具清单
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列007  版本管理
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97007%20%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/">
+										SVN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97007%20%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/git%20merge%20%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%20%E5%92%8C%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/">
+										git merge 本地仓库 和 远程仓库
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97007%20%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/sourcetree%E6%95%99%E7%A8%8B/">
+										sourcetree教程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97007%20%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/%E8%8D%89%E7%A8%BF/">
+										草稿
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列013 操作系统
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97013%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%A5%9E%E5%A5%87%E7%9A%84Window%E7%9B%AE%E5%BD%95/">
+										神奇的Window目录
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97013%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AA%97%E5%8F%A3%E5%86%85%E5%B5%8C/">
+										窗口内嵌
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列015 博客
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97015%20%E5%8D%9A%E5%AE%A2/Unite%20Copenhagen%202019%20Keynote%20%E6%80%BB%E7%BB%93/">
+										Unite Copenhagen 2019 Keynote 总结
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97015%20%E5%8D%9A%E5%AE%A2/cache/">
+										cache
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97015%20%E5%8D%9A%E5%AE%A2/%E5%AF%BB%E8%B7%AF/">
+										寻路
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列017 【杂记】
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/C%E7%9B%98%E6%B8%85%E7%90%86%E7%AC%94%E8%AE%B0/">
+										C盘清理笔记
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/Vtuber%E5%88%86%E6%9E%90/">
+										Vtuber分析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E6%89%8B%E6%B8%B8%E7%8E%A9%E5%AE%B6%E5%9C%A8%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E4%BB%A3%E5%85%A5%E6%84%9F%EF%BC%9F/">
+										如何提升手游玩家在游戏中的代入感？
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E6%82%9F%E7%A9%BA/">
+										悟空
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E7%9B%B8%E6%9C%BA/">
+										游戏中的相机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%9E%8B/">
+										游戏类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%20-%20%E7%A4%BE%E4%BA%A4%E4%BD%93%E7%B3%BB%E5%88%86%E6%9E%90/">
+										王者荣耀 - 社交体系分析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E7%BE%8E%E5%9B%BDMMORPG%E4%BB%98%E8%B4%B9%E8%AE%BE%E8%AE%A1/">
+										美国MMORPG付费设计
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">
+										胡思乱想
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97017%20%E3%80%90%E6%9D%82%E8%AE%B0%E3%80%91/%E8%A1%8C%E4%B8%9A%E5%88%9D%E5%BF%83/">
+										行业初心
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列018 专利计划
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97018%20%E4%B8%93%E5%88%A9%E8%AE%A1%E5%88%92/%E4%B8%93%E5%88%A9%E8%AE%A1%E5%88%92%E7%9B%AE%E5%BD%95/">
+										专利计划目录
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列019 Fat3d学习笔记
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97019%20Fat3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+										问题记录
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列020 开源项目
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/DirectorEditor/">
+										DirectorEditor
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/UI%E6%A1%86%E6%9E%B6-MVPFramework/">
+										UI框架-MVPFramework
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/Winform%20%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">
+										Winform 源码构建过程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/github%20%E5%8F%91%E5%B8%83nuget%E5%8C%85/">
+										github 发布nuget包
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/winform%20debug%20%E6%A8%A1%E5%BC%8F%E8%B0%83%E8%AF%95/">
+										winform debug 模式调试
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/">
+										使用流程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%85%B3%E4%BA%8E%E5%85%B6%E5%AE%83%E7%BA%BF%E7%A8%8B%E4%B8%8D%E8%83%BD%E8%B0%83%E7%94%A8UI%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%A7%A3%E9%87%8A/">
+										关于其它线程不能调用UI线程的解释
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90/">
+										文档生成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%AA%97%E5%8F%A3%E6%A0%B7%E5%BC%8F/">
+										窗口样式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%B2%BE%E5%BD%A9%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+										精彩代码片段
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列021 Photoshop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97021%20Photoshop/%E6%89%A9%E5%A4%A7%E5%9B%BE%E7%89%87&%E8%BE%93%E5%87%BAtga/">
+										扩大图片&输出tga
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列022 天下3安装器
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/CICD%E6%B5%81%E7%A8%8B/">
+										CICD流程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/MVPControls/">
+										MVPControls
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/MVPFramework/">
+										MVPFramework
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/README/">
+										README
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/Windows%E4%B8%8B%E6%90%AD%E5%BB%BACICD/">
+										Windows下搭建CICD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/Winform%20%E5%BC%82%E5%BD%A2%E7%AA%97%E4%BD%93/">
+										Winform 异形窗体
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/git%20tag/">
+										git tag
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/git%E6%8E%A8%E9%80%81/">
+										git推送
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/markdown/">
+										markdown
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97022%20%E5%A4%A9%E4%B8%8B3%E5%AE%89%E8%A3%85%E5%99%A8/%E5%BC%80%E5%8F%91%E5%8E%86%E7%A8%8B/">
+										开发历程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系列023 框架类
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/FatCrown%E9%80%9A%E8%AF%BB%E4%B8%80%EF%BC%9A%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95/">
+										FatCrown通读一：笔记记录
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										IMGUI
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB01%EF%BC%9A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+										IMGUI通读01：环境搭建
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB02%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+										IMGUI通读02：生命周期
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB03%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%88%92%E5%88%86/">
+										IMGUI通读03：模块划分
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB04%EF%BC%9A%E4%BE%8B%E5%AD%90/">
+										IMGUI通读04：例子
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB05%EF%BC%9A%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
+										IMGUI通读05：内存分配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/WPF%20%E8%B8%A9%E5%9D%91%E5%BD%92%E7%BA%B3/">
+										WPF 踩坑归纳
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	gRPC
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C#/gRPC/" class="leancloud_visitors" data-flag-title=""></span>
+		</span>
+	
+	<span>鲁文奎</span>
+	<span>2021-04-22 12:04:29</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="grpc">gRPC</h1>
+<h4 id="grpc-1" id="Grpc"><strong>Grpc</strong></h4>
+<p>RPC 生命周期(RPC life cycle)</p>
+<h4 id="unary-rpc" id="Unary-RPC"><strong>Unary RPC</strong></h4>
+<p><strong>First consider the simplest type of RPC where the client sends a single request and gets back a single response.</strong><br />
+首先考虑最简单的RPC调用, 客户端发送一次简单的请求, 然后收到一个简单的响应.</p>
+<ol>
+<li><strong>Once the client calls a stub method, the server is notified that the RPC has been invoked with the client’s metadata for this call, the method name, and the specified deadline if applicable.</strong><br />
+当客户端调用服务端接口时, 服务端将使用客户端本次调用的元数据(metadata)、方法名和时限(如果指定了的话)来调用RPC接口</li>
+<li><strong>The server can then either send back its own initial metadata (which must be sent before any response) straight away, or wait for the client’s request message. Which happens first, is application-specific.</strong><br />
+然后, 服务器马上发回自己的初始化的元数据(metadata)(在任何响应之前,这个元数据必须首先被发送),之后, 服务端开始等待客户端的请求信息。首先发生的, 是应用程序指定的. (这句话没懂!!!)</li>
+<li><strong>Once the server has the client’s request message, it does whatever work is necessary to create and populate a response. The response is then returned (if successful) to the client together with status details (status code and optional status message) and optional trailing metadata.</strong><br />
+当服务端收到客户端的请求消息时， 它将创建和填充响应所需要的一切内容。然后这个响应将和状态细节(状态码和状态信息)、可选的trailing metadata等一起发送给客户端(如果响应成功的话).</li>
+<li><strong>If the response status is OK, then the client gets the response, which completes the call on the client side.</strong><br />
+如果响应的状态OK, 客户端将收到这个响应, 在客户端上完成此次调用</li>
+</ol>
+<h4 id="server-streaming-rpc" id="Server-streaming-RPC"><strong>Server streaming RPC</strong></h4>
+<p><strong>A server-streaming RPC is similar to a unary RPC, except that the server returns a stream of messages in response to a client’s request. After sending all its messages, the server’s status details (status code and optional status message) and optional trailing metadata are sent to the client. This completes processing on the server side. The client completes once it has all the server’s messages.</strong><br />
+server-streaming RPC 中, 服务端根据客户端的请求将返回stream 类型的 message给客户端，其它过程server-streaming RPC 和 unary RPC 调用相似。 在发送所有的message之后, 服务端的状态细节(状态码和状态信息)、可选的trailing metadata 也将被发送给客户端。这样就完成了服务端的处理过程。客户端的处理过程在接受到所有消息之后也被完成。</p>
+<h4 id="client-streaming-rpc" id="Client-streaming-RPC"><strong>Client streaming RPC</strong></h4>
+<p><strong>A client-streaming RPC is similar to a unary RPC, except that the client sends a stream of messages to the server instead of a single message. The server responds with a single message (along with its status details and optional trailing metadata), typically but not necessarily after it has received all the client’s messages.</strong><br />
+client-streaming RPC 中, 客户端将发送一个stream类型的消息给服务端而不是一个单个的message, 其它过程client-streaming RPC和unary RPC 调用相似。 服务端通常(但不一定)在收到所有的客户端消息之后,以单个的message(包含状态细节、可选的trailing metadata)进行返回。</p>
+<h4 id="bidirectional-streaming-rpc" id="Bidirectional-streaming-RPC"><strong>Bidirectional streaming RPC</strong></h4>
+<p><strong>In a bidirectional streaming RPC, the call is initiated by the client invoking the method and the server receiving the client metadata, method name, and deadline. The server can choose to send back its initial metadata or wait for the client to start streaming messages.</strong><br />
+在bidirectional streaming RPC中, 客户端调用方法初始化此次rpc, 服务端将收到客户端的metadata,method name, dealline.服务端可以选择发送其initial metadata给客户端 或者 等待客户端开始发送stream 类型的message.<br />
+<strong>client-and-server-side stream processing is application specific. Since the two streams are independent, the client and server can read and write messages in any order. For example, a server can wait until it has received all of a client’s messages before writing its messages, or the server and client can play “ping-pong” – the server gets a request, then sends back a response, then the client sends another request based on the response, and so on.</strong><br />
+client-and-server-side stream 处理过程是由application指定的。 因为这两段stream都是无依赖的, 因此客户端和服务端以任何顺序读写message.例如: 服务端可以等待直到客户端将所有的message都写入到stream中, 或者服务端和客户端以&quot;ping-pong&quot;的方式处理请求。</p>
+<h4 id="deadlines%2Ftimeouts" id="Deadlines-Timeouts"><strong>Deadlines/Timeouts</strong></h4>
+<p><strong>gRPC allows clients to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with a DEADLINE_EXCEEDED error. On the server side, the server can query to see if a particular RPC has timed out, or how much time is left to complete the RPC.</strong><br />
+gRPC 允许客户端指定等待响应时长。在服务端, 可以去查询指定的RPC是否超时, RPC还剩下多长时间。<br />
+<strong>Specifying a deadline or timeout is language specific: some language APIs work in terms of timeouts (durations of time), and some language APIs work in terms of a deadline (a fixed point in time) and may or maynot have a default deadline.</strong><br />
+指定dealine or timeout 依赖于特定的语言: 有点语言的API指定一个超时(timeout), 有的语言API指定一个固定时间点(deadline), 有点语言有(也可能没有)一个默认的deadline.</p>
+<h4 id="rpc-termination(rpc%E4%B8%AD%E6%96%AD)" id="RPC-termination-RPC中断"><strong>RPC termination(RPC中断)</strong></h4>
+<p><strong>In gRPC, both the client and server make independent and local determinations of the success of the call, and their conclusions may not match. This means that, for example, you could have an RPC that finishes successfully on the server side (“I have sent all my responses!&quot;) but fails on the client side (“The responses arrived after my deadline!&quot;). It’s also possible for a server to decide to complete before a client has sent all its requests.</strong><br />
+在gRPC中, 客户端和服务端都是独立的, rpc是否成功依赖于其本地, 它们的结论可能并不一样.例如: 服务端在收到RPC之后, 成功处理之后, 向客户端返回一个消息&quot;我已经向你发送了相应了&quot;, 但是在客户端却显示失败&quot;这个响应达到我这里已经超时了&quot;。还有一种情况是, 在服务端收到客户端的所有message之后, 就将此rpc标记成功.</p>
+<h4 id="cancelling-an-rpc" id="Cancelling-an-RPC"><strong>Cancelling an RPC</strong></h4>
+<p><strong>Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done.</strong><br />
+客户端和服务端中的任何一方在任何时候都可以取消RPC.取消行为将立即终止RPC。需要注意的是, 取消之前所做的的更改不会回滚。</p>
+<h4 id="metadata(%E5%85%83%E6%95%B0%E6%8D%AE)" id="Metadata-元数据"><strong>Metadata(元数据)</strong></h4>
+<p><strong>Metadata is information about a particular RPC call (such as authentication details) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings, but can be binary data. Metadata is opaque to gRPC itself - it lets the client provide information associated with the call to the server and vice versa.</strong><br />
+元数据 是有关特定RPC调用的信息(比如身份验证等), 以键值对的形式表示。元数据的键是字符串, 通常其值也是字符串，但是也有可能是二进制数据.元数据对gRPC来说是不透明的-它让客户端提供本次调用服务器接口的相关信息, 反之亦然。<br />
+<strong>Access to metadata is language dependent.</strong><br />
+对元数据的访问取决于语言。</p>
+<h4 id="channels-(%E9%80%9A%E9%81%93)" id="Channels-通道"><strong>Channels (通道</strong>)</h4>
+<p><strong>A gRPC channel provides a connection to a gRPC server on a specified host and port. It is used when creating a client stub. Clients can specify channel arguments to modify gRPC’s default behaviour, such as switching message compression on or off. A channel has state, including connected and idle.</strong><br />
+一个gRPC通道可以与一个指定host和port的gRPC服务器建立连接。它通常用于创建一个client stub. 客户单也可以指定通道参数去修改gRPC的默认行为, 比如打开/关闭 数据压缩. 通道有一个状态, 包含已连接、正常状态.<br />
+<strong>How gRPC deals with closing a channel is language dependent. Some languages also permit querying channel state.</strong><br />
+gRPC 如何关闭一个通道依赖于具体的语言。在一些语言的实现中, 也支持查询通道的状态。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/04/22/%E7%B3%BB%E5%88%97020%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%85%B3%E4%BA%8E%E5%85%B6%E5%AE%83%E7%BA%BF%E7%A8%8B%E4%B8%8D%E8%83%BD%E8%B0%83%E7%94%A8UI%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%A7%A3%E9%87%8A/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/04/22/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/FatCrown%E9%80%9A%E8%AF%BB%E4%B8%80%EF%BC%9A%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BD%95/">
+                
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: 'IhaxSu22kTnJLluhrU60KFES-gzGzoHsz',
+			appKey: '6LWnqTGUEUzixN0ew6yLNoSB',
+			placeholder: 'enter comment!',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'sixgodzhang.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2021-<span id="footerYear"></span> 
+	<a href="/">鲁文奎</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
