@@ -323,6 +323,15 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
+									<a href="/2021/04/23/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9001/C++%E6%9D%82%E8%AE%B0005%EF%BC%9A%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E8%AF%A6%E8%A7%A3/">
+										C++杂记005：调用约定详解
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
 									<a href="/2021/04/22/%E7%B3%BB%E5%88%97002%20%20%20%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9001/C%E5%92%8CC++%E4%B8%AD%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93/">
 										C和C++中的结构体
 									</a>
@@ -1106,6 +1115,42 @@ var _hmt = _hmt || [];
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/23/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB06%EF%BC%9AWindow%E7%AA%97%E4%BD%93%E6%A1%86%E6%9E%B6/">
+										IMGUI通读06：Window窗体框架
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/23/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB07%EF%BC%9AWin32%E5%B1%82%E5%AE%9E%E7%8E%B0/">
+										IMGUI通读07：Win32层实现
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/23/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB08%EF%BC%9Adx9%E5%B1%82%E5%AE%9E%E7%8E%B0/">
+										IMGUI通读08：dx9层实现
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/23/%E7%B3%BB%E5%88%97023%20%E6%A1%86%E6%9E%B6%E7%B1%BB/IMGUI/IMGUI%E9%80%9A%E8%AF%BB09%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%95%B4%E7%90%86/">
+										IMGUI通读09：常用数据结构整理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1156,7 +1201,206 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h1 id="imgui%E9%80%9A%E8%AF%BB%E4%BA%94%EF%BC%9A%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">IMGUI通读五：内存分配</h1>
+	<p>[toc]</p>
+<h2 id="%E4%BB%8B%E7%BB%8D" id="介绍">介绍</h2>
+<p>内存分配模块在imgui.h中定义, 包含以下主要函数：</p>
+<ul>
+<li>IM_MALLOC()</li>
+<li>IM_FREE()</li>
+<li>IM_NEW()</li>
+<li>IM_PLACEMENT_NEW()</li>
+<li>IM_DELETE()</li>
+</ul>
+<pre><code class="language-c++">struct ImNewDummy &#123;&#125;;
+inline void* operator new(size_t, ImNewDummy, void* ptr) &#123; return ptr; &#125;
+inline void  operator delete(void*, ImNewDummy, void*) &#123;&#125; // This is only required so we can use the symmetrical new()
+
+#define IM_ALLOC(_SIZE)                     ImGui::MemAlloc(_SIZE)
+#define IM_FREE(_PTR)                       ImGui::MemFree(_PTR)
+#define IM_NEW(_TYPE)                       new(ImNewDummy(), ImGui::MemAlloc(sizeof(_TYPE))) _TYPE
+template&lt;typename T&gt; void IM_DELETE(T* p) &#123; if (p) &#123; p-&gt;~T(); ImGui::MemFree(p); &#125; &#125;
+</code></pre>
+<p>如上,ImGui 通过重载new函数，重新定义new的使用方式, 并以此追踪内存泄漏问题。</p>
+<ul>
+<li>IM_NEW、IM_FREE函数成对使用</li>
+<li>IM_PLACEMENT_NEW 在一个已分配内存的地方进行对象创建</li>
+<li>IM_DELETE 清理一个对象</li>
+</ul>
+<h2 id="%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%BB%93%E6%9E%84%E5%89%96%E6%9E%90" id="内存分配结构剖析">内存分配结构剖析</h2>
+<p>C++ 中默认的new函数</p>
+<pre><code class="language-c++">_Ret_notnull_ _Post_writable_byte_size_(_Size)
+_VCRT_ALLOCATOR void* __CRTDECL operator new(
+    size_t _Size
+    );
+
+_Ret_maybenull_ _Success_(return != NULL) _Post_writable_byte_size_(_Size)
+_VCRT_ALLOCATOR void* __CRTDECL operator new(
+    size_t _Size,
+    std::nothrow_t const&amp;
+    ) noexcept;
+
+_Ret_notnull_ _Post_writable_byte_size_(_Size)
+_VCRT_ALLOCATOR void* __CRTDECL operator new[](
+    size_t _Size
+    );
+
+_Ret_maybenull_ _Success_(return != NULL) _Post_writable_byte_size_(_Size)
+_VCRT_ALLOCATOR void* __CRTDECL operator new[](
+    size_t _Size,
+    std::nothrow_t const&amp;
+    ) noexcept;
+</code></pre>
+<p>因此， 不允许重载这个版本</p>
+<pre><code>void* operator new(size_t, void*);
+</code></pre>
+<p>所以, 增加一个ImNewDummy参数来规避此问题，如下:</p>
+<pre><code class="language-c++">#define IM_NEW(_TYPE)                       new(ImNewDummy(), ImGui::MemAlloc(sizeof(_TYPE))) _TYPE
+</code></pre>
+<p>同时, 在MemAlloc函数中， 我们可以统计内存分配大小、追踪内存泄漏等问题</p>
+<pre><code class="language-c++">void* ImGui::MemAlloc(size_t size)
+&#123;
+	cout &lt;&lt; &quot;call MemAlloc &quot; &lt;&lt; size &lt;&lt; endl;
+	return GImAllocatorAllocFunc(size, GImAllocatorUserData);
+&#125;
+
+void ImGui::MemFree(void* ptr)
+&#123;
+	cout &lt;&lt; &quot;call MemFree &quot; &lt;&lt; endl;
+	return GImAllocatorFreeFunc(ptr, GImAllocatorUserData);
+&#125;
+</code></pre>
+<p>真正的内存分配函数是由GImAllocatorAllocFunc来决定, GImAllocatorUserData是一个用户内存统计数据， 暂时没有什么需要注意的地方</p>
+<pre><code class="language-c++">static void* (*GImAllocatorAllocFunc)(size_t size, void* user_data) = MallocWrapper;
+static void(*GImAllocatorFreeFunc)(void* ptr, void* user_data) = FreeWrapper;
+// 记录分配相关的数据
+static void*    GImAllocatorUserData = NULL;
+</code></pre>
+<p>如上, 我们可以看到， GImAllocatorAllocFunc和GImAllocatorFreeFunc都是函数指针, 指向一个默认的分配器和释放器</p>
+<pre><code class="language-c++">// Used to silence &quot;unused variable warnings&quot;. Often useful as asserts may be stripped out from final builds.
+#define IM_UNUSED(_VAR)             ((void)_VAR)
+
+static void*   MallocWrapper(size_t size, void* user_data) &#123; IM_UNUSED(user_data); return malloc(size); &#125;
+static void    FreeWrapper(void* ptr, void* user_data) &#123; IM_UNUSED(user_data); free(ptr); &#125;
+</code></pre>
+<p>其实， 最终就是我们熟悉的malloc函数。</p>
+<h2 id="im_placement_new" id="IM-PLACEMENT-NEW">IM_PLACEMENT_NEW</h2>
+<p>通俗点说，此函数就是在已有的内存空间上重新构造一个相同类型的对象</p>
+<pre><code class="language-c++">	Person* p2 = IM_NEW(Person)();
+	Person* p3 = IM_PLACEMENT_NEW(p2) Person(1001, &quot;李四&quot;);
+</code></pre>
+<p>内存地址：<br />
+<img src="20210423110442282_17444.png" alt="" /></p>
+<h2 id="%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0im_delete-%E5%92%8C-im_free%E5%8C%BA%E5%88%AB" id="模板函数IM-DELETE-和-IM-FREE区别">模板函数IM_DELETE 和 IM_FREE区别</h2>
+<p>区别如下:</p>
+<ul>
+<li>IM_FREE 仅回收内存</li>
+<li>IM_DELETE 调用析构函数 &amp;&amp; 内存回收</li>
+</ul>
+<p>因此, 建议使用IM_DELETE函数</p>
+<h2 id="%E5%AE%8C%E6%95%B4%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81" id="完整测试代码">完整测试代码</h2>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+
+using namespace std;
+
+// Used to silence &quot;unused variable warnings&quot;. Often useful as asserts may be stripped out from final builds.
+#define IM_UNUSED(_VAR)             ((void)_VAR)
+
+static void*   MallocWrapper(size_t size, void* user_data) &#123; IM_UNUSED(user_data); return malloc(size); &#125;
+static void    FreeWrapper(void* ptr, void* user_data) &#123; IM_UNUSED(user_data); free(ptr); &#125;
+
+static void* (*GImAllocatorAllocFunc)(size_t size, void* user_data) = MallocWrapper;
+static void(*GImAllocatorFreeFunc)(void* ptr, void* user_data) = FreeWrapper;
+// 记录分配相关的数据
+static void*    GImAllocatorUserData = NULL;
+
+namespace ImGui
+&#123;
+	void*         MemAlloc(size_t size);
+	void          MemFree(void* ptr);
+&#125;
+
+void* ImGui::MemAlloc(size_t size)
+&#123;
+	cout &lt;&lt; &quot;call MemAlloc &quot; &lt;&lt; size &lt;&lt; endl;
+	return GImAllocatorAllocFunc(size, GImAllocatorUserData);
+&#125;
+
+void ImGui::MemFree(void* ptr)
+&#123;
+	cout &lt;&lt; &quot;call MemFree &quot; &lt;&lt; endl;
+	return GImAllocatorFreeFunc(ptr, GImAllocatorUserData);
+&#125;
+
+struct ImNewDummy &#123;&#125;;
+// void* operator new(size_t, void*); // C++中, 不允许重新定义这个版本 
+inline void* operator new(size_t, ImNewDummy, void* ptr) &#123; return ptr; &#125;
+inline void  operator delete(void*, ImNewDummy, void*) &#123;&#125; // This is only required so we can use the symmetrical new()
+
+#define IM_ALLOC(_SIZE)                     ImGui::MemAlloc(_SIZE)
+#define IM_FREE(_PTR)                       ImGui::MemFree(_PTR)
+#define IM_NEW(_TYPE)                       new(ImNewDummy(), ImGui::MemAlloc(sizeof(_TYPE))) _TYPE
+#define IM_PLACEMENT_NEW(_PTR)              new(ImNewDummy(), _PTR)
+template&lt;typename T&gt; void IM_DELETE(T* p) &#123; if (p) &#123; p-&gt;~T(); ImGui::MemFree(p); &#125; &#125;
+
+class Person &#123;
+public:
+	Person();
+	Person(int id, string name);
+	~Person();
+	int Id; //4
+	string name; // 28
+	void printInfo();
+&#125;;
+
+Person::Person()
+&#123;
+	this-&gt;Id = 0;
+	this-&gt;name = &quot;&quot;;
+&#125;
+
+Person::Person(int id, string name) 
+&#123;
+	this-&gt;Id = id;
+	this-&gt;name = name;
+&#125;
+
+Person::~Person()
+&#123;
+	cout &lt;&lt; &quot;call destructor func... &quot; &lt;&lt; endl;
+&#125;
+
+void Person::printInfo()
+&#123;
+	cout &lt;&lt; &quot;the person's id is &quot; &lt;&lt; this-&gt;Id &lt;&lt; this-&gt;name &lt;&lt; endl;
+&#125;
+
+void main()
+&#123;
+	// test 1 - new 和 free
+	//Person* p1 = new Person(1000, &quot;张三&quot;);
+	//p1-&gt;printInfo();
+	//free(p1);
+
+	// test 2 - IM_NEW 和 IM_FREE
+	/*Person* p1 = IM_NEW(Person)(1000, &quot;张三&quot;);
+	p1-&gt;printInfo();
+	IM_FREE(p1);*/
+
+	// test 3 - IM_NEW 和 IM_PLACEMENT_NEW
+	Person* p2 = IM_NEW(Person)();
+	Person* p3 = IM_PLACEMENT_NEW(p2) Person(1001, &quot;李四&quot;);
+
+	// test 4 - 多次FREE
+	// IM_FREE 仅回收内存
+	//IM_FREE(p2);
+	//IM_FREE(p2);
+
+	// test 5 - IM_DELETE
+	// IM_DELETE 调用析构函数 &amp;&amp; 内存回收
+	IM_DELETE(p2);
+&#125;
+</code></pre>
 
 </div>
 
